@@ -1,4 +1,6 @@
+__pycache__/
 Source/
 *.png
 *.mp3
 *.swp
+*.bak
