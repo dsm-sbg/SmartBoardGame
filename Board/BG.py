@@ -50,6 +50,13 @@ def Changed():
 
     return res
 
+def DrawCharacter(source):
+    character_u = GIFImage(charictor_u_path)
+    character_a = GIFImage(charictor_a_path)
+
+    character_u.render(gamedisplay, (100, 100))
+    character_u.render(gamedisplay, (300, 300))
+
 def DrawDoor():
     for i in range(0, 8):
         gameDisplay.blit(pygame.image.load(Door_Path + "Open_Door1.png"), (Door_Squares[i], Door_Floors[i]))
@@ -84,7 +91,6 @@ def ChangeFULL():
     else:
         gameDisplay = pygame.display.set_mode(backgroundSize, pygame.DOUBLEBUF)
         flag_FULL = 1
-
 
 def ChangeCONN(status):
     global flag_CONN
