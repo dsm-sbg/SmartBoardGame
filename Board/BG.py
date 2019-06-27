@@ -4,8 +4,8 @@ import time
 import pygame
 
 flag_FULL = False; pre_flag_FULL = False
-flag_CONN = False; pre_flag_FULL = False
-flag_TURN = 1; pre_flag_FULL = 1
+flag_CONN = False; pre_flag_CONN = False
+flag_TURN = 1; pre_flag_TURN = 1
 
 backgroundSize = (1280, 720)
 
