@@ -6,6 +6,7 @@ import pygame
 flag_FULL = False; pre_flag_FULL = False
 flag_CONN = False; pre_flag_CONN = False
 flag_TURN = 1; pre_flag_TURN = 1
+flag_ORDER = 1; pre_flag_ORDER = 1
 
 backgroundSize = (1280, 720)
 
@@ -18,13 +19,8 @@ Door_Squares = [587, 708, 503, 362, 849, 981, 230, 107]
 Door_Floors = [90, 223, 223, 356, 356, 489, 489, 622]
 
 def InitBackground():
-    pygame.init()
-
     DrawBackground()
-    time.sleep(1)
-
     DrawDoor()
-    time.sleep(1)
 
 def Changed():
     res = 0
@@ -32,25 +28,43 @@ def Changed():
     global flag_FULL
     global flag_CONN
     global flag_TURN
+    global flag_ORDER
 
     global pre_flag_FULL
     global pre_flag_CONN
     global pre_flag_TURN
+    global pre_flag_ORDER
 
-    if pre_flag_FULL != flag_FULL :
+    if pre_flag_FULL != flag_FULL:
         res = 1
-    elif pre_flag_CONN != flag_CONN :
+    elif pre_flag_CONN != flag_CONN:
         res = 1
-    elif pre_flag_TURN != flag_TURN :
+    elif pre_flag_TURN != flag_TURN:
+        res = 1
+    elif pre_flag_ORDER != flag_ORDER:
         res = 1
 
     pre_flag_FULL = flag_FULL
     pre_flag_CONN = flag_CONN
     pre_flag_TURN = flag_TURN
+    pre_flag_ORDER = flag_ORDER
 
     return res
 
-#def DrawCharacterPNG(
+def DrawCharacter(players):
+    global flag_ORDER
+
+    for player in players:
+        if player.turn == True:
+            active = 1
+        else:
+            active = 0
+
+        gameDisplay.blit(pygame.image.load(player.path[active].replace('N', str(flag_ORDER))), tuple(player.pos))
+    flag_ORDER = flag_ORDER + 1
+
+    if flag_ORDER > 7:
+        flag_ORDER = 1
 
 def DrawDoor():
     for i in range(0, 8):
