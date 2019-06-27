@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import os
 import time
 import pygame
@@ -18,29 +17,28 @@ UNIT_SQUARE = 100
 DEFAULT_PATH = "/home/pi/SmartBoardGame/Board/Source/Character/"
 
 class player:
-    character_a = pygame.image.load("Default.png")
-    character_u = pygame.image.load("Default.png")
+    path = [str(), str()]
 
-    square_pos = int()
-    floor_pos = int()
+    pos = [0, 0]
+
     index = int()
     turn = False
 
     def __init__(self, index, square, floor, Color):
         self.index = index
-        self.square_pos = square
-        self.floor_pos = floor
-        self.character_a = pygame.image.load(DEFAULT_PATH + "Character_{0}_A.png".format(Color))
-        self.character_u = pygame.image.load(DEFAULT_PATH + "Character_{0}_U.png".format(Color))
+        self.pos[0] = square
+        self.pos[1] = floor
+        self.path[0] = DEFAULT_PATH + "Default_N.png"
+        self.path[1] = DEFAULT_PATH + "Default_N.png"
 
         print("index: ", self.index)
-        print("square_pos: ", self.square_pos)
-        print("floor_pos: ", self.floor_pos)
-        print("character_a", self.character_a)
-        print("character_u", self.character_u)
+        print("square_pos: ", self.pos[0])
+        print("floor_pos: ", self.pos[1])
+        print("character_a", self.path[0])
+        print("character_u", self.path[1])
 
     def CheckTurn(nowTurn):
         if this.index == nowTurn:
-            turn = 1
+            this.turn = True
         else :
-            turn = 0
+            this.turn = False
