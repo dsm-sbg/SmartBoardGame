@@ -50,12 +50,7 @@ def Changed():
 
     return res
 
-def DrawCharacter(source):
-    character_u = GIFImage(charictor_u_path)
-    character_a = GIFImage(charictor_a_path)
-
-    character_u.render(gamedisplay, (100, 100))
-    character_u.render(gamedisplay, (300, 300))
+#def DrawCharacterPNG(
 
 def DrawDoor():
     for i in range(0, 8):
