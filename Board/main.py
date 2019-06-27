@@ -22,6 +22,7 @@ index = 0
 players = []
 
 os.system("sudo ./AudioRepeat.sh BGM/Egypt_Theme.mp3 &")
+pygame.init()
 
 crashed = False
 try:
@@ -53,7 +54,7 @@ try:
 
                 if event.key == pygame.K_3:
                     if not flag_GREEN:
-                        players.append(player(index, 981, 100, "Green"))
+                        players.append(player(index, 900, 100, "Green"))
                         index = index + 1
                         flag_GREEN = True
 
@@ -61,19 +62,19 @@ try:
                     if not flag_RED:
                         flag_RED = True
                         index = index + 1
-                        players.append(player(index, 981, 100, "Red"))
+                        players.append(player(index, 900, 900, "Red"))
 
                 if event.key == pygame.K_2:
                     if not flag_BLUE:
                         flag_BLUE = True
                         index = index + 1
-                        players.append(player(index, 981, 100, "Blue"))
+                        players.append(player(index, 100, 900, "Blue"))
 
                 if event.key == pygame.K_4:
                     if not flag_PURPLE:
                         flag_PURPLE = True
                         index = index + 1
-                        players.append(player(index, 981, 100, "Purple"))
+                        players.append(player(index, 100, 100, "Purple"))
 
 
 
@@ -81,11 +82,10 @@ try:
                 if event.key == pygame.K_c:
                     ChangeCONN(True)
 
-        if Changed():
-            print("Changed")
-            DrawBackground()
-            DrawDoor()
-            pygame.display.update()
+        InitBackground()
+        DrawCharacter(players)
+        pygame.display.update()
+
 
 except Exception as e:
     print(GetTraceBackStr())
