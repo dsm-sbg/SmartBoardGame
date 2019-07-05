@@ -16,7 +16,7 @@ UNIT_SQUARE = 100
 
 DEFAULT_PATH = "/home/pi/SmartBoardGame/Board/Source/Character/"
 
-class player:
+class Player:
     path = [str(), str()]
 
     pos = [0, 0]
@@ -37,8 +37,8 @@ class player:
         print("character_a", self.path[0])
         print("character_u", self.path[1])
 
-    def CheckTurn(nowTurn):
-        if this.index == nowTurn:
-            this.turn = True
+    def CheckTurn(self, nowTurn):
+        if self.index == nowTurn:
+            self.turn = True
         else :
-            this.turn = False
+            self.turn = False
