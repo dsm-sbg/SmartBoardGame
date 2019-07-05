@@ -19,7 +19,24 @@ def GetTraceBackStr():
     return '\n'.join(rl)
 
 index = 0
+nowTurn = 0
 players = []
+
+players.append(Player(index, 500, 100, "Green"))
+index = index + 1
+flag_GREEN = True
+
+players.append(Player(index, 500, 100, "Red"))
+index = index + 1
+flag_RED = True
+
+players.append(Player(index, 500, 100, "Purple"))
+index = index + 1
+flag_PURPLE = True
+
+players.append(Player(index, 500, 100, "Blue"))
+index = index + 1
+flag_BLUE = True
 
 os.system("sudo ./AudioRepeat.sh BGM/Egypt_Theme.mp3 &")
 pygame.init()
@@ -50,11 +67,12 @@ try:
                     OpenDoor(6)
                     CloseDoor(6)
 
-
+##                if event.key == pygame.K_e:
+##                    gameDisplay.blit(pygame.image.load())
 
                 if event.key == pygame.K_3:
                     if not flag_GREEN:
-                        players.append(player(index, 900, 100, "Green"))
+                        players.append(Player(index, 500, 100, "Green"))
                         index = index + 1
                         flag_GREEN = True
 
@@ -62,19 +80,19 @@ try:
                     if not flag_RED:
                         flag_RED = True
                         index = index + 1
-                        players.append(player(index, 900, 900, "Red"))
+                        players.append(Player(index, 500, 500, "Red"))
 
                 if event.key == pygame.K_2:
                     if not flag_BLUE:
                         flag_BLUE = True
                         index = index + 1
-                        players.append(player(index, 100, 900, "Blue"))
+                        players.append(Player(index, 100, 500, "Blue"))
 
                 if event.key == pygame.K_4:
                     if not flag_PURPLE:
                         flag_PURPLE = True
                         index = index + 1
-                        players.append(player(index, 100, 100, "Purple"))
+                        players.append(Player(index, 100, 100, "Purple"))
 
 
 
@@ -86,6 +104,11 @@ try:
         DrawCharacter(players)
         pygame.display.update()
 
+        for player in players:
+            player.CheckTurn(nowTurn)
+
+        nowTurn = nowTurn + 1
+        nowTurn = nowTurn % 4
 
 except Exception as e:
     print(GetTraceBackStr())
