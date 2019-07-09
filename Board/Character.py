@@ -48,8 +48,8 @@ class Player:
         print("character_u", self.path[1])
 
     def SetPos(self, pos):
-        self.pos[0] = pos[0]
-        self.pos[1] = pos[1]
+        self.pos[0] = LOCATION[pos[1]][pos[0]]
+        self.pos[1] = pos[1] * UNIT_FLOOR
 
     def CheckTurn(self, nowTurn):
         if self.index == nowTurn:
