@@ -52,7 +52,6 @@ def Changed():
     return res
 
 def DrawCharacter(players):
-    print("DrawCharacter Start")
     global flag_ORDER
 
 ##    for player in players:
@@ -70,40 +69,31 @@ def DrawCharacter(players):
 
     if flag_ORDER > 7:
         flag_ORDER = 1
-    print("DrawCharacter End")
 
 def DrawDoor():
-    print("DrawDoor Start")
     for i in range(0, 8):
         gameDisplay.blit(pygame.image.load(Door_Path + "Open_Door1.png"), (Door_Squares[i], Door_Floors[i]))
-    print("DrawDoor End")
 
 def DrawBackground():
-    print("DrawBackground Start")
-    gameDisplay.blit(pygame.image.load("./BG.png"),(0,0))
+    gameDisplay.blit(pygame.image.load("./Source/BG.png"),(0,0))
 
     if not flag_CONN:
-        gameDisplay.blit(pygame.image.load("./Connect Failed.png"), (30, 5))
-    print("DrawBackground End")
+        gameDisplay.blit(pygame.image.load("./Source/Connect Failed.png"), (30, 5))
 
 def OpenDoor(num):
-    print("OpenDoor Start")
     os.system("mpg123 -q BGM/Close_Door.mp3 &")
 
     for i in range(1, 8):
         gameDisplay.blit(pygame.image.load(Door_Path + "Open_Door"+ str(i)  +".png"),(Door_Squares[num], Door_Floors[num]))
         time.sleep(0.1)
         pygame.display.update()
-    print("OpenDoor End")
 
 def CloseDoor(num):
-    print("CloseDoor Start")
     os.system("mpg123 -q BGM/Close_Door.mp3 &")
     for i in range(7, 0, -1):
         gameDisplay.blit(pygame.image.load(Door_Path + "Open_Door"+ str(i)  +".png"),(Door_Squares[num], Door_Floors[num]))
         time.sleep(0.1)
         pygame.display.update()
-    print("CloseDoor End")
 
 def ChangeFULL():
     global flag_FULL

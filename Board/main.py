@@ -22,19 +22,19 @@ index = 0
 nowTurn = 0
 players = []
 
-players.append(Player(index, 500, 100, "Green"))
+players.append(Player(index, 0, 0, "Green"))
 index = index + 1
 flag_GREEN = True
 
-players.append(Player(index, 500, 100, "Red"))
+players.append(Player(index, 1, 1, "Red"))
 index = index + 1
 flag_RED = True
 
-players.append(Player(index, 500, 100, "Purple"))
+players.append(Player(index, 2, 2, "Purple"))
 index = index + 1
 flag_PURPLE = True
 
-players.append(Player(index, 500, 100, "Blue"))
+players.append(Player(index, 3, 0, "Blue"))
 index = index + 1
 flag_BLUE = True
 
@@ -94,8 +94,6 @@ try:
                         index = index + 1
                         players.append(Player(index, 100, 100, "Purple"))
 
-
-
             elif event.type is pygame.KEYUP:
                 if event.key == pygame.K_c:
                     ChangeCONN(True)
@@ -118,4 +116,3 @@ finally:
     os.system("sudo killall mpg123")
     os.system("sudo killall python3")
     pygame.quit()
-
