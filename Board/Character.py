@@ -8,11 +8,11 @@ flag_BLUE = False
 flag_GREEN = False
 flag_PURPLE = False
 
-LOCATION = [[600, 500, 400, 300, 200, 100]
-            [100, 200, 300, 400, 500]
-            [400, 300, 200, 100]
-            [100, 200, 300]
-            [200, 100]]
+LOCATION = ((600, 500, 400, 300, 200, 100),
+            (100, 200, 300, 400, 500),
+            (400, 300, 200, 100),
+            (100, 200, 300),
+            (200, 100))
 
 DEFAULT_FLOOR = 690
 DEFAULT_SQUARE = 140
@@ -38,8 +38,8 @@ class Player:
         self.index = index
         self.pos[0] = LOCATION[floor][square]
         self.pos[1] = floor * UNIT_FLOOR
-        self.path[0] = DEFAULT_PATH + "Default_N.png"
-        self.path[1] = DEFAULT_PATH + "Default_N.png"
+        self.path[0] = DEFAULT_PATH + "Stand/" + Color + "/N.png"
+        self.path[1] = DEFAULT_PATH + "Run/" + Color + "/DirectionN.png"
 
         print("index: ", self.index)
         print("square_pos: ", self.pos[0])

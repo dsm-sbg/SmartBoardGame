@@ -67,7 +67,7 @@ def DrawCharacter(players):
 
     flag_ORDER = flag_ORDER + 1
 
-    if flag_ORDER > 7:
+    if flag_ORDER > 8:
         flag_ORDER = 1
 
 def DrawDoor():
