@@ -26,20 +26,23 @@ RIGHT = 2
 DEFAULT_PATH = "/home/pi/SmartBoardGame/Board/Source/Character/"
 
 class Player:
+    color = str()
     path = [str(), str()]
 
     pos = [0, 0]
+    action = 1
 
-    direction = LEFT
+    direction = "Left"
     index = int()
     turn = False
 
-    def __init__(self, index, square, floor, Color):
-        self.index = index
-        self.pos[0] = LOCATION[floor][square]
-        self.pos[1] = floor * UNIT_FLOOR
+    def __init__(self, Index, Square, Floor, Color):
+        self.index = Index
+        self.color = Color
+        self.pos[0] = LOCATION[Floor][Square]
+        self.pos[1] = Floor * UNIT_FLOOR
         self.path[0] = DEFAULT_PATH + "Stand/" + Color + "/N.png"
-        self.path[1] = DEFAULT_PATH + "Run/" + Color + "/DirectionN.png"
+        self.path[1] = DEFAULT_PATH + "Run/" + Color + "/N.png"
 
         print("index: ", self.index)
         print("square_pos: ", self.pos[0])
@@ -47,9 +50,9 @@ class Player:
         print("character_a", self.path[0])
         print("character_u", self.path[1])
 
-    def SetPos(self, pos):
-        self.pos[0] = LOCATION[pos[1]][pos[0]]
-        self.pos[1] = pos[1] * UNIT_FLOOR
+    def SetPos(self, Pos):
+        self.pos[0] = LOCATION[Pos[1]][Pos[0]]
+        self.pos[1] = Pos[1] * UNIT_FLOOR
 
     def CheckTurn(self, nowTurn):
         if self.index == nowTurn:
@@ -59,6 +62,6 @@ class Player:
 
     def CheckDirection(self, nowFloor):
         if (nowFloor / 2) == 0:
-            direction = LEFT
+            direction = "Left"
         else :
-            direction = RIGHT
+            direction = "Right"
