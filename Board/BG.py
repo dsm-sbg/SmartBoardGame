@@ -58,7 +58,6 @@ def DrawCharacter(players):
             path = player.path[0].replace('N', str(player.action))
 
         gameDisplay.blit(pygame.image.load(path), tuple(player.pos))
-        print("Color: {}/Pos: {}".format(player.color, player.pos))
 
 def DrawDoor():
     for i in range(0, 8):
