@@ -34,7 +34,6 @@ try:
                 crashed = True
 
             if event.type is pygame.KEYDOWN:
-                print(event)
 
                 if event.key == pygame.K_f:
                     ChangeFULL()
@@ -46,20 +45,16 @@ try:
                     crashed = True
 
                 if event.key == pygame.K_d:
-                    OpenDoor(7)
-                    CloseDoor(7)
-                    OpenDoor(6)
-                    CloseDoor(6)
+                    flag_DOOR = ((flag_DOOR % 4) + 1) * -1
+                    SetDoor(flag_DOOR)
 
                 if event.key == pygame.K_1:
-                    nowTurn = 0
                     if not flag_RED:
                         flag_RED = True
                         players.append(Player(index, 1, 1, "Red"))
                         index = index + 1
 
                 if event.key == pygame.K_2:
-                    nowTurn = 1
                     if not flag_BLUE:
                         flag_BLUE = True
                         players.append(Player(index, 2, 2, "Blue"))
@@ -72,22 +67,21 @@ try:
                         index = index + 1
 
                 if event.key == pygame.K_4:
-                    nowTurn = 3
                     if not flag_PURPLE:
                         flag_PURPLE = True
                         players.append(Player(index, 3, 2, "Purple"))
                         index = index + 1
 
                 if event.key == pygame.K_t:
-                    nowTurn = nowTurn + 1
-                    nowTurn = nowTurn % 4
+                    if index != 0:
+                        nowTurn = nowTurn + 1
+                        nowTurn = nowTurn % (index)
 
             elif event.type is pygame.KEYUP:
                 if event.key == pygame.K_c:
                     ChangeCONN(True)
 
-        InitBackground()
-        DrawCharacter(players)
+        Frame(players)
         pygame.display.update()
 
         for player in players:

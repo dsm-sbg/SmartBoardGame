@@ -29,6 +29,7 @@ class Player:
     def __init__(self, Index, Square, Floor, Color):
         self.index = Index
         self.color = Color
+
         self.action = 1
         self.direction = 'Left'
         self.turn = False
@@ -43,9 +44,13 @@ class Player:
 ##          print("character_a", self.path[0])
 ##          print("character_u", self.path[1])
 
-    def SetPos(self, Square, Floor):
-        self.pos[0] = LOCATION[Floor][Square]
-        self.pos[1] = Floor * UNIT_FLOOR
+        def SetPos(self, x, y):
+            self.pos[0] = x
+            self.pos[1] = y
+
+##      def SetPos(self, Square, Floor):
+##          self.pos[0] = LOCATION[Floor][Square]
+##          self.pos[1] = Floor * UNIT_FLOOR
 
     def CheckTurn(self, nowTurn):
         if self.index == nowTurn:
@@ -53,8 +58,8 @@ class Player:
         else :
             self.turn = False
 
-    def CheckDirection(self, nowFloor):
-        if (nowFloor / 2) == 0:
+    def ChangeDirection(self):
+        if self.direction == "Left":
+            self.direction = "Right"
+        else:
             direction = "Left"
-        else :
-            direction = "Right"
