@@ -29,19 +29,19 @@ class Player:
     def __init__(self, Index, Square, Floor, Color):
         self.index = Index
         self.color = Color
+        self.action = 1
+        self.direction = 'Left'
         self.turn = False
 
-        self.action = 1
-        self.direction = "Left"
-
         self.pos = [LOCATION[Floor][Square], (Floor + 1) * UNIT_FLOOR]
-        self.path = (DEFAULT_PATH + "Stand/" + Color + "/N.png", DEFAULT_PATH + "Run/" + Color + "/N.png")
+        self.path = [DEFAULT_PATH + "Stand/" + Color + "/N.png",
+                     DEFAULT_PATH + "Run/" + Color + "/N.png"]
 
-        print("index: ", self.index)
-        print("square_pos: ", self.pos[0])
-        print("floor_pos: ", self.pos[1])
-        print("character_a", self.path[0])
-        print("character_u", self.path[1])
+##          print("index: ", self.index)
+##          print("square_pos: ", self.pos[0])
+##          print("floor_pos: ", self.pos[1])
+##          print("character_a", self.path[0])
+##          print("character_u", self.path[1])
 
     def SetPos(self, Square, Floor):
         self.pos[0] = LOCATION[Floor][Square]

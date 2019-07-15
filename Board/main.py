@@ -51,33 +51,36 @@ try:
                     OpenDoor(6)
                     CloseDoor(6)
 
-                if event.key == pygame.K_3:
-                    nowTurn = 2
-                    if not flag_GREEN:
-                        players.append(Player(index, 0, 0, "Green"))
-                        index = index + 1
-                        flag_GREEN = True
-
                 if event.key == pygame.K_1:
                     nowTurn = 0
                     if not flag_RED:
                         flag_RED = True
-                        index = index + 1
                         players.append(Player(index, 1, 1, "Red"))
+                        index = index + 1
 
                 if event.key == pygame.K_2:
                     nowTurn = 1
                     if not flag_BLUE:
                         flag_BLUE = True
-                        index = index + 1
                         players.append(Player(index, 2, 2, "Blue"))
+                        index = index + 1
+
+                if event.key == pygame.K_3:
+                    if not flag_GREEN:
+                        flag_GREEN = True
+                        players.append(Player(index, 0, 0, "Green"))
+                        index = index + 1
 
                 if event.key == pygame.K_4:
                     nowTurn = 3
                     if not flag_PURPLE:
                         flag_PURPLE = True
-                        index = index + 1
                         players.append(Player(index, 3, 2, "Purple"))
+                        index = index + 1
+
+                if event.key == pygame.K_t:
+                    nowTurn = nowTurn + 1
+                    nowTurn = nowTurn % 4
 
             elif event.type is pygame.KEYUP:
                 if event.key == pygame.K_c:
