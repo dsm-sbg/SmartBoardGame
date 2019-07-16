@@ -23,14 +23,14 @@ def SendData(data):
 
     ser.write(packet)
 
-    print("Sent 0x{} 0x{} 0x{}".format(0x02, data, 0x03))
+#    print("Sent 0x{} {} 0x{}".format(0x02, hex(data), 0x03))
 
 if __name__ == "__main__":
     while True:
         buff = ser.read(3)
 
         if buff[0] == 0x02:
-            print('buff[1]: ', buff[1])
+#            print('buff[1]: ', buff[1])
             if buff[1] == 83:
                 if endFlag == True:
                     f.write(turn + '\n' + str(Dice))
@@ -40,7 +40,7 @@ if __name__ == "__main__":
             elif 48 < buff[1] and buff[1] < 56:
                 Dice = buff[1] - 48
                 endFlag = True
-                SendData(0x49)
+                SendData(0x4F)
 
             else:
                 print("Error: buff[1] is ", buff[1])

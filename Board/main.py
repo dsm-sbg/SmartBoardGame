@@ -3,9 +3,32 @@ import sys
 import time
 import pygame
 import traceback
+import subprocess
 
 from Character import *
 from BG import *
+
+turn = 0
+index = 0
+nowTurn = 0
+
+players = []
+
+os.system("sudo ./AudioRepeat.sh BGM/Egypt_Theme.mp3 &")
+pygame.init()
+
+crashed = False
+
+def GetDice(turn):
+    subprocess.run(['python3', "RF.py", str(turn)])
+
+    f = open("result", 'r')
+    result = f.readlines()
+    print(result)
+    while int(result[0]) != turn:
+        time.sleep(0.001)
+
+    return result
 
 def GetTraceBackStr():
     lines = traceback.format_exc().strip().split("\n")
@@ -18,14 +41,6 @@ def GetTraceBackStr():
 
     return '\n'.join(rl)
 
-index = 0
-nowTurn = 0
-players = []
-
-os.system("sudo ./AudioRepeat.sh BGM/Egypt_Theme.mp3 &")
-pygame.init()
-
-crashed = False
 try:
     InitBackground()
     while not crashed:
