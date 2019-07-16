@@ -32,6 +32,8 @@ def SetDoor(door):
     flag_DOOR = door
 
 def Frame(players):
+    first = -1
+
     global flag_DOOR
     global pre_flag_DOOR
     global frame
@@ -65,11 +67,14 @@ def Frame(players):
     for player in players:
         action = player.action
         if player.turn == True:
-            path = player.path[1].replace('N', player.direction + str(action))
+            first = players.index(player)
         else:
             path = player.path[0].replace('N', str(action))
-        gameDisplay.blit(pygame.image.load(path), tuple(player.pos))
+            gameDisplay.blit(pygame.image.load(path), tuple(player.now_pos))
         player.action = (player.action % 8) + 1
+    if first >= 0:
+        path = players[first].path[1].replace('N', players[first].direction + str(players[first].action))
+        gameDisplay.blit(pygame.image.load(path), tuple(players[first].now_pos))
 
     if not flag_CONN:
         gameDisplay.blit(pygame.image.load(Default_Path + "Connect Failed.png"), (30, 5))

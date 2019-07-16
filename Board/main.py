@@ -66,25 +66,25 @@ try:
                 if event.key == pygame.K_1:
                     if not flag_RED:
                         flag_RED = True
-                        players.append(Player(index, 1, 1, "Red"))
+                        players.append(Player(index, "Red"))
                         index = index + 1
 
                 if event.key == pygame.K_2:
                     if not flag_BLUE:
                         flag_BLUE = True
-                        players.append(Player(index, 2, 2, "Blue"))
+                        players.append(Player(index, "Blue"))
                         index = index + 1
 
                 if event.key == pygame.K_3:
                     if not flag_GREEN:
                         flag_GREEN = True
-                        players.append(Player(index, 0, 0, "Green"))
+                        players.append(Player(index, "Green"))
                         index = index + 1
 
                 if event.key == pygame.K_4:
                     if not flag_PURPLE:
                         flag_PURPLE = True
-                        players.append(Player(index, 3, 2, "Purple"))
+                        players.append(Player(index, "Purple"))
                         index = index + 1
 
                 if event.key == pygame.K_t:

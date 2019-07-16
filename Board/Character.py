@@ -8,17 +8,12 @@ flag_BLUE = False
 flag_GREEN = False
 flag_PURPLE = False
 
-LOCATION = ((600, 500, 400, 300, 200, 100),
-            (100, 200, 300, 400, 500),
-            (400, 300, 200, 100),
-            (100, 200, 300),
-            (200, 100))
-
-DEFAULT_FLOOR = 690
-DEFAULT_SQUARE = 140
-
-UNIT_FLOOR = 150
-UNIT_SQUARE = 100
+Block_x  =  ((1032, 898, 764, 630, 494, 360, 226, 99),
+            (222, 352, 491, 630, 767, 973),
+            (841, 630, 498, 354),
+            (495, 700),
+            (579))
+Block_y  =  (85, 218, 351, 484, 617)
 
 LEFT = 1
 RIGHT = 2
@@ -26,7 +21,7 @@ RIGHT = 2
 DEFAULT_PATH = "/home/pi/SmartBoardGame/Board/Source/Character/"
 
 class Player:
-    def __init__(self, Index, Square, Floor, Color):
+    def __init__(self, Index, Color):
         self.index = Index
         self.color = Color
 
@@ -34,23 +29,24 @@ class Player:
         self.direction = 'Left'
         self.turn = False
 
-        self.pos = [LOCATION[Floor][Square], (Floor + 1) * UNIT_FLOOR]
+        self.now_pos = [Block_x[0][0] + (self.index * 35), Block_y[4]]
+        self.dst_pos = self.now_pos
         self.path = [DEFAULT_PATH + "Stand/" + Color + "/N.png",
                      DEFAULT_PATH + "Run/" + Color + "/N.png"]
 
-##          print("index: ", self.index)
-##          print("square_pos: ", self.pos[0])
-##          print("floor_pos: ", self.pos[1])
-##          print("character_a", self.path[0])
-##          print("character_u", self.path[1])
+        print("index: ", self.index)
+        print("now_pos: ", self.now_pos)
+        print("dst_pos: ", self.dst_pos)
+        print("character_a", self.path[0])
+        print("character_u", self.path[1])
 
-        def SetPos(self, x, y):
-            self.pos[0] = x
-            self.pos[1] = y
+        def SetNowPos(self, x, y):
+            self.now_pos[0] = x
+            self.now_pos[1] = y
 
-##      def SetPos(self, Square, Floor):
-##          self.pos[0] = LOCATION[Floor][Square]
-##          self.pos[1] = Floor * UNIT_FLOOR
+        def SetDstPos(self, square, floor):
+            self.dst_pos[0] = Block_x[floor][suqare] + (self.index * 35)
+            self.dst_pos[1] = Block_y[floor]
 
     def CheckTurn(self, nowTurn):
         if self.index == nowTurn:
